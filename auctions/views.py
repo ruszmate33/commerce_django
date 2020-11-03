@@ -7,6 +7,10 @@ from django.urls import reverse
 from .models import User
 
 
+def test(request):
+    pass
+
+
 def index(request):
     return render(request, "auctions/index.html")
 
@@ -40,7 +44,6 @@ def register(request):
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
-        print(email)
 
         # Ensure password matches confirmation
         password = request.POST["password"]
