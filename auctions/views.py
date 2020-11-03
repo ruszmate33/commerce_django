@@ -40,6 +40,7 @@ def register(request):
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
+        print(email)
 
         # Ensure password matches confirmation
         password = request.POST["password"]
