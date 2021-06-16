@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
@@ -6,16 +7,22 @@ from django.urls import reverse
 
 from .models import User
 
-
+@login_required(login_url="login")
 def index(request):
     return render(request, "auctions/index.html")
 
+
+@login_required(login_url="login")
 def categories(request):
     return render(request, "auctions/categories.html")
 
+
+@login_required(login_url="login")
 def watchlist(request):
     return render(request, "auctions/watchlist.html")
 
+
+@login_required(login_url="login")
 def create_listing(request):
     return render(request, "auctions/create_listing.html")
 

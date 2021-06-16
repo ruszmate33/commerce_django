@@ -11,8 +11,15 @@ class User(AbstractUser):
 # one for comments made on auction listings. It’s up to you to decide what fields each model should have, and what the types of those fields should be. You may have additional models if you would like.
 
 class Listing(models.Model):
+    # title 
+    # description
+    # starting bid
+    # url
+    # category
+    # comment
     pass
 
 class Bid(models.Model):
+    # 
     pass
 
