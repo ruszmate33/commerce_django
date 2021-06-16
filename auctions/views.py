@@ -4,12 +4,16 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from .forms import NewListingForm
+from .models import Listing, User
 
-from .models import User
 
 @login_required(login_url="login")
 def index(request):
-    return render(request, "auctions/index.html")
+    print(f"listings {Listing.objects.all()}")
+    return render(request, "auctions/index.html", {
+        "listings" : Listing.objects.all() 
+    })
 
 
 @login_required(login_url="login")
@@ -24,7 +28,17 @@ def watchlist(request):
 
 @login_required(login_url="login")
 def create_listing(request):
-    return render(request, "auctions/create_listing.html")
+    if request.method == "POST":
+        form = NewListingForm(request.POST)
+        if form.is_valid():
+            listing = Listing()
+            listing.title = form.cleaned_data["title"]
+            listing.save()
+            return HttpResponseRedirect(reverse("index"))
+
+    return render(request, "auctions/create_listing.html", {
+        "form" : NewListingForm(),   
+    })
 
 
 def login_view(request):

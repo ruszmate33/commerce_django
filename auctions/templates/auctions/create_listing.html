@@ -2,6 +2,8 @@
 
 {% block body %}
     <h2>Create listing</h2>
-
-    TODO
+    <form action="{% url 'create_listing' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+    </form>
 {% endblock %}
