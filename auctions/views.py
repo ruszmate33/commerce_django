@@ -33,6 +33,10 @@ def create_listing(request):
         if form.is_valid():
             listing = Listing()
             listing.title = form.cleaned_data["title"]
+            listing.description = form.cleaned_data["description"]
+            listing.startingBid = form.cleaned_data["startingBid"]
+            listing.imageUrl = form.cleaned_data["imageUrl"]
+            listing.category = form.cleaned_data["category"]
             listing.save()
             return HttpResponseRedirect(reverse("index"))
 

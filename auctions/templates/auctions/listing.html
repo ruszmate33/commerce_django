@@ -2,5 +2,9 @@
 
 {% block body %}
     <h2>Listings</h2>
-    {{ listing.title }}
+    <h3>{{ listing.title }}</h3>
+    <h4>{{ listing.description }}</h4>
+    <h4>${{ listing.startingBid }}</h4>
+    <img src="{{ listing.imageUrl }}" alt="{{ listing.description }}"> 
+    <h4>{{ listing.category }}</h4>
 {% endblock %}

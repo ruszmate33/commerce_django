@@ -3,10 +3,10 @@ from django.db import models
 
 class Listing(models.Model):
     title = models.CharField(max_length=64, default='auction_title')
-    # description = models.CharField(max_length=64)
-    # startingBid = models.DecimalField(max_digits=6, decimal_places=2)
-    # imageUrl = models.URLField(max_length=200)
-    # category = models.CharField(max_length=200)
+    description = models.CharField(max_length=64, default='')
+    startingBid = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    imageUrl = models.URLField(max_length=200, default='')
+    category = models.CharField(max_length=200, default='')
     #comment = models.ForeignKey()
 
 
